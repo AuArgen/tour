@@ -10,14 +10,17 @@ body {
 	max-width: 1800px;
 	width: 100%;
 	position: relative;
-	background: white;
+	background-color: #eee;
 }
 
 header {
+	position: sticky;
+	top: -1%;
 	width: 100%;
 	background: white;
 	padding: 0% 10%;
 	box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.3);
+	z-index: 999;
 }
 
 header .headerTop{
@@ -30,30 +33,19 @@ header .headerTop{
 	top: calc((100vh - 200px)/2);
 	background: white;
 	border-radius: 5px;
+	z-index: 1000;
 }
-
-
-
 header .headerTop .sosial {
 	display: flex;
 	padding: 10px;
-
 	justify-content: center;
 	width: 100%;
 	align-items: space-between;
 	flex-direction: column;
-	/*height: vh;*/
 	box-shadow:1px 1px 8px 1px rgba(0,0,0,0.1);
-	/*border-right: 1px solid gray;*/
-	/*background: red;*/
-	/*gap:10px;*/
-	/*background: red;*/
 }
 
-/*header .headerTop .sosialRight{
-	justify-content: flex-start;
-}
-*/
+
 header .headerTop .sosial a {
 	width: 40px;
 	height: 40px;
@@ -92,6 +84,7 @@ header .headerTop .sosial a i {
 	transform: 0.5s;
 	animation: icons 5s infinite ease-in-out;
 	transform: rotateY(0deg);
+
 }
 
 header .headerTop .sosial a i:hover {
@@ -116,11 +109,7 @@ header .headerTop .sosial a i:hover {
 
 header .header .logo {
 	width: 100px;
-	/*height: 80px;*/
 	border-radius: 50%;
-	/*border: 1px solid gray;*/
-	/*overflow: hidden;*/
-	/*background: url("../img/logo2.png");*/
 	background-size: cover; 
 }
 
@@ -135,7 +124,6 @@ header .header {
 	width: 100%;
 }
 
-
  header .header > a {
  	width: calc((100%)/6);
  	display: flex;
@@ -144,18 +132,338 @@ header .header {
  	color:black;
  	font-weight: 900;
  	padding: 1%;
- 	/*height: 80px;*/
- 	/*font-size: 1.2rem;*/
- 	/*border-bottom: 3px solid white;*/
  }
 
 header .header .pageActive{
-	/*border-bottom: 3px solid green;*/
 	color: gray;
 }
 
 header .header>a:hover {
- 	/*border-bottom: 3px solid green;*/
 	color: gray;
+}
 
-  }
+
+
+
+.slideshow-container {
+  width: 100%;
+  position: relative;
+  margin: auto;
+  max-height: 70vh;
+  overflow: hidden;
+
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+section {
+	width: 90%;
+	margin: 2% 5%;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	background: white;
+}
+
+/*Tours start*/
+.tour h2 {
+	width: 100%;
+	margin: 2%;
+}
+.tour h2 center {
+	font-size: 1.4rem;
+}
+.tour .block1 {
+	background: white;
+	padding: 1%;
+	box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.1);
+	width: 82%;
+	justify-self: center;
+	align-self: center;
+	display: flex;
+	justify-content: space-between;
+	margin: 1%;
+}
+
+.tour .block1 .img {
+	width: 40%;
+	padding: 1%;
+	min-height: 220px;
+	max-height: 400px;
+	position: relative;
+}
+
+.tour .block1 .img img {
+	position: absolute;
+	top: -30px;
+	left: -30px;
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+	box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.2);
+}
+.tour .block1 .info {
+	width: 60%;
+}
+
+.tour .block1 .info h3 {
+	font-size: 1.2rem;
+	margin-bottom: 2%;
+}
+
+.tour .block1 .info span {
+	font-size: 0.9rem;
+}
+
+.tour .block1 .info p {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 4%;
+}
+
+.tour .block1 .info p a {
+	padding: 2% 7%;
+	background: rgb(33,128,250);
+background: linear-gradient(90deg, rgba(33,128,250,1) 0%, rgba(11,167,217,1) 100%, rgba(103,230,49,1) 100%);
+	box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.1);
+	color: white;
+	transition: 0.5s;
+	
+}
+
+.tour .block1 .info p a:hover {
+	background: white;
+	color: rgba(33,128,250,1);
+	transition: 0.5s;
+}
+.tour .block1 .info p span {
+	font-weight: 700;
+}
+
+.tour .block2 {
+	background: white;
+	padding: 1%;
+	box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.1);
+	width: 40%;
+/*	justify-self: center;*/
+/*	align-self: center;*/
+	display: flex;
+	justify-content: space-between;
+	margin: 1%;
+}
+
+.tour .block2 .img {
+	width: 45%;
+	padding: 1%;
+	min-height: 150px;
+/*	max-height: 400px;*/
+	position: relative;
+}
+
+.tour .block2 .img img {
+	position: absolute;
+	top: -25px;
+	left: -30px;
+	width: 100%;
+	max-height: 100%;
+	min-height: 150px;
+	border-radius: 10px;
+	box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.2);
+}
+
+.tour .block2 .info {
+	width: 55%;
+}
+
+.tour .block2 .info h3 {
+	font-size: 1.2rem;
+	margin-bottom: 2%;
+}
+
+.tour .block2 .info span {
+	font-size: 0.9rem;
+}
+
+.tour .block2 .info p {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 4%;
+}
+
+.tour .block2 .info p a {
+	padding: 2% 7%;
+	background: rgb(33,128,250);
+background: linear-gradient(90deg, rgba(33,128,250,1) 0%, rgba(11,167,217,1) 100%, rgba(103,230,49,1) 100%);
+	box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.1);
+	color: white;
+	transition: 0.5s;
+
+}
+
+.tour .block2 .info p a:hover {
+	background: white;
+	color: rgba(33,128,250,1);
+	transition: 0.5s;
+}
+
+.tour .block2 .info p span {
+	font-weight: 700;
+}
+
+
+
+
+
+.tour .block3 {
+	background: white;
+	padding: 1%;
+	box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.1);
+	width: 26%;
+/*	justify-self: center;*/
+/*	align-self: center;*/
+	display: flex;
+	justify-content: center;
+	margin: 1%;
+	flex-wrap: wrap;
+}
+
+.tour .block3 .img {
+	width: 98%;
+	padding: 1%;
+	min-height: 150px;
+/*	max-height: 400px;*/
+	position: relative;
+}
+
+.tour .block3 .img img {
+	width: 100%;
+	max-height: 100%;
+	min-height: 150px;
+}
+
+.tour .block3 .info {
+	width: 98%;
+}
+
+.tour .block3 .info h3 {
+	font-size: 1.2rem;
+	margin-bottom: 2%;
+}
+
+.tour .block3 .info span {
+	font-size: 0.9rem;
+}
+
+.tour .block3 .info p {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 4%;
+}
+
+.tour .block3 .info p a {
+	padding: 2% 7%;
+	background: rgb(33,128,250);
+background: linear-gradient(90deg, rgba(33,128,250,1) 0%, rgba(11,167,217,1) 100%, rgba(103,230,49,1) 100%);
+	box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.1);
+	color: white;
+	transition: 0.5s;
+
+}
+
+.tour .block3 .info p a:hover {
+	background: white;
+	color: rgba(33,128,250,1);
+	transition: 0.5s;
+}
+
+.tour .block3 .info p span {
+	font-weight: 700;
+}
+
+
+
+/*Tours end*/
