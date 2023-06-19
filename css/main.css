@@ -1,0 +1,28 @@
+.addCete{
+	width: 0px;
+	overflow: hidden;
+	animation: showCate 3s;
+	padding: 0;
+	margin:0;
+	height: 0;
+}
+
+@keyframes showCate {
+	0%{
+		width:100%;
+		padding:10px;
+		min-height: 40px;
+	}
+	90% {
+		width: 100%;
+		padding:10px;
+		min-height: 40px;
+
+	}
+	100% {
+		width: 0px;
+		padding:0px;
+		min-height: 0px;
+
+	}
+}
