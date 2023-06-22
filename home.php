@@ -1,30 +1,21 @@
 	<!-- Slideshow container -->
 <main>
 	<div class="slideshow-container">
-
-	  <!-- Full-width images with number and caption text -->
-	  <div class="mySlides fade">
-	    <div class="numbertext">1 / 4</div>
-	    <img src="./img/slide1.jpg" style="width:100%">
-	    <div class="text">Caption Text</div>
-	  </div>
-
-	  <div class="mySlides fade">
-	    <div class="numbertext">2 / 4</div>
-	    <img src="./img/slide2.jpg" style="width:100%">
-	    <div class="text">Caption Two</div>
-	  </div>
-
-	  <div class="mySlides fade">
-	    <div class="numbertext">3 / 4</div>
-	    <img src="./img/slide3.jpg" style="width:100%">
-	    <div class="text">Caption Three</div>
-	  </div>
-	   <div class="mySlides fade">
-	    <div class="numbertext">4 / 4</div>
-	    <img src="./img/slide4.jpg" style="width:100%">
-	    <div class="text">Caption Text</div>
-	  </div>
+	<?php 
+		$dot = "";
+		$sliderN = mysqli_num_rows($slider);
+		if ($sliderN) {
+			$count = 1;
+			while ($r = mysqli_fetch_array($slider)) {
+				$dot = $dot.'<span class="dot" onclick="currentSlide('.$count.')"></span>';
+				echo '<div class="mySlides fade">
+					    <div class="numbertext">'.$count++.' / '.$sliderN.'</div>
+					    <img src="'.$r["img"].'" style="width:100%">
+					    <div class="text">'.$r["text"].'</div>
+					  </div>';
+			}
+		}
+	?>
 
 	  <!-- Next and previous buttons -->
 	  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -34,10 +25,7 @@
 
 	<!-- The dots/circles -->
 	<div style="text-align:center">
-	  <span class="dot" onclick="currentSlide(1)"></span>
-	  <span class="dot" onclick="currentSlide(2)"></span>
-	  <span class="dot" onclick="currentSlide(3)"></span>
-	  <span class="dot" onclick="currentSlide(4)"></span>
+	  <?php echo $dot; ?>
 	</div>
 	<script type="text/javascript">
 		let slideIndex = 1;

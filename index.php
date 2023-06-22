@@ -1,4 +1,5 @@
 <?php 
+	require("./service.php");
 
 	$title = "Home page";
 	$listPage = ["home","tours","location","lodging","contact","about"];
@@ -22,8 +23,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Megaline ноутбуки  года купить —  купить по низкой цене на Megaline Маркете <?php echo $infoMeta; ?> ">
-    <meta name="description" content="Купить samsung, lenovo, asus, mac book ноутбуки 2020 года купить - 156 предложений - низкие цены, экспресс-доставка от 1-2 часов, возможность оплаты в рассрочку для части товаров, кешбэк <?php echo $infoMeta; ?> ">
+    <meta property="og:title" content="<?php echo $infoMeta; ?> ">
+    <meta name="description" content=" <?php echo $infoMeta; ?> ">
     <title><?php echo $title;?></title>
     <link href="./img/logo.webp" rel="icon" type="image/x-png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
