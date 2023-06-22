@@ -11,6 +11,7 @@
 
 body {
 	max-width: 1800px;
+	min-height: 200px;
 	width: 100%;
 	position: relative;
 	background-color: #eee;
@@ -136,25 +137,42 @@ header .header {
 	align-items: center;
 	width: 100%;
 }
+header .header .closeMenu {
+	display: none;
+}
+header .header .menu {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 90%;
+}
 
- header .header > a {
+ header .header .menu a {
  	width: calc((100%)/6);
  	display: flex;
  	justify-content: center;
  	align-items: center;
  	color:black;
- 	font-weight: 900;
+ 	font-weight: 600;
  	padding: 1%;
  }
 
 header .header .pageActive{
+/*	color: rgba(0, 0, 0, 0.5);*/
+border-top: 2px solid green;
+border-bottom: 2px solid green;
+/*border-right: 2px solid green;*/
+}
+
+header .header .menu a:hover {
 	color: gray;
 }
 
-header .header>a:hover {
-	color: gray;
+header .header button {
+	background: none;
+	border: none;
+	display: none;
 }
-
 
 
 
@@ -171,7 +189,9 @@ header .header>a:hover {
 .mySlides {
   display: none;
 }
-
+.mySlides img {
+	min-height: 150px;
+}
 /* Next & previous buttons */
 .prev, .next {
   cursor: pointer;
@@ -277,7 +297,6 @@ section h3 {
 	justify-content: space-between;
 	margin: 1%;
 }
-
 .tour .block1 .img {
 	width: 40%;
 	padding: 1%;
@@ -288,7 +307,7 @@ section h3 {
 
 .tour .block1 .img img {
 	position: absolute;
-	top: -30px;
+	top: -20px;
 	left: -30px;
 	width: 100%;
 	height: 100%;
@@ -310,8 +329,13 @@ section h3 {
 	width: 60%;
 }
 
+.tour > div .info h3 {
+	text-align: left;
+}
+
+
 .tour .block1 .info h3 {
-	font-size: 1.2rem;
+	font-size: 1rem;
 	margin-bottom: 2%;
 }
 
@@ -364,29 +388,26 @@ background: linear-gradient(90deg, rgba(33,128,250,1) 0%, rgba(11,167,217,1) 100
 
 .tour .block2 .img {
 	width: 45%;
-	padding: 1%;
+/*	padding: 2%;*/
 	min-height: 150px;
-/*	max-height: 400px;*/
 	position: relative;
 }
 
 .tour .block2 .img img {
-	position: absolute;
-	top: -15px;
-	left: -15px;
-	width: 100%;
+	width: 98%;
 	max-height: 100%;
 	min-height: 150px;
-	border-radius: 10px;
-	box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.2);
+/*	border-radius: 10px;*/
+/*	box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.2);*/
 }
 
 .tour .block2 .info {
 	width: 55%;
+	padding: 1%;
 }
 
 .tour .block2 .info h3 {
-	font-size: 1.2rem;
+	font-size: 1rem;
 	margin-bottom: 2%;
 }
 
@@ -458,7 +479,7 @@ background: linear-gradient(90deg, rgba(33,128,250,1) 0%, rgba(11,167,217,1) 100
 }
 
 .tour .block3 .info h3 {
-	font-size: 1.2rem;
+	font-size: 1rem;
 	margin-bottom: 2%;
 }
 
@@ -516,13 +537,39 @@ background: linear-gradient(90deg, rgba(33,128,250,1) 0%, rgba(11,167,217,1) 100
 }
 
 .tour .videoInfo .info h3 {
-	font-size: 1.2rem;
+	font-size: 1.1rem;
 	margin-bottom: 1%;
 }
 
 .tour > div {
 	border-radius: 8px;
 }
+
+.tour > div .img {
+	position: relative;
+}
+.tour > div .img img {
+	z-index: 2;
+}
+.tour > div .img .price{
+	display: block;
+	position: absolute;
+	z-index: 3;
+	left: -5px;
+	top: -5px;
+	background: rgba(0, 0, 0, 0.5);
+	color: white;
+	font-size: 1.1rem;
+	padding: 1% 3%;
+	border-radius: 10px;
+}
+
+.tour .block3 .img .price, .tour .block2 .img .price{
+	left: 8px;
+	top: 8px;
+}
+
+
 /*Tours end*/
 
 
@@ -661,4 +708,569 @@ footer h3 {
 	text-align: center;
 	font-weight: 100;
 
+}
+
+
+
+
+.body {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  position: relative;
+}
+.body::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background: #ba24c2;
+  clip-path: polygon(86% 0, 100% 0, 100% 100%, 60% 100%);
+}
+.containerContact {
+  z-index: 12;
+  max-width: 1050px;
+  width: 100%;
+  background: #fff;
+  border-radius: 12px;
+  margin: 0 20px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+.containerContact .content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 20px;
+}
+.content .image-box {
+  max-width: 55%;
+}
+.content .image-box img {
+  width: 100%;
+}
+.content .topic {
+  font-size: 22px;
+  font-weight: 500;
+  color: #ba24c2;
+}
+.content form {
+  width: 40%;
+  margin-right: 30px;
+}
+.content .input-box {
+  height: 50px;
+  width: 100%;
+  margin: 16px 0;
+  position: relative;
+}
+.content .input-box input {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 6px;
+  font-size: 16px;
+  outline: none;
+  padding: 0 16px;
+  background: #fae9fb;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+.content .input-box input:focus,
+.content .input-box input:valid {
+  border-color: #ba24c2;
+  background-color: #fff;
+}
+.content .input-box label {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  color: #636c72;
+  font-size: 15px;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+}
+.content .input-box input:focus ~ label,
+.content .input-box input:valid ~ label {
+  top: 0;
+  left: 12px;
+  display: 14px;
+  color: #ba24c2;
+  background: #fff;
+}
+.content .message-box {
+  min-height: 100px;
+  position: relative;
+}
+.content .message-box textarea {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  resize: none;
+  background: #fae9fb;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  outline: none;
+  padding: 5px 16px;
+  transition: all 0.3s ease;
+}
+.content .message-box textarea:focus {
+  border-color: #ba24c2;
+  background-color: #fff;
+}
+.content .message-box label {
+  position: absolute;
+  font-size: 16px;
+  color: #636c72;
+  left: 18px;
+  top: 6px;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+.content .message-box textarea:focus ~ label {
+  left: 12px;
+  top: -10px;
+  color: #ba24c2;
+  font-size: 14px;
+  background: #fff;
+}
+.content .input-box input[type="submit"] {
+  color: #fff;
+  background: #ba24c2;
+  padding-left: 0;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+.content .input-box input[type="submit"]:hover {
+  background-color: #d43ddb;
+}
+@media (max-width: 1000px) {
+  .content .image-box {
+    max-width: 70%;
+  }
+  .content {
+    padding: 10px 0;
+  }
+}
+@media (max-width: 900px) {
+  .content .image-box {
+    display: none;
+  }
+  .content form {
+    width: 100%;
+    margin-left: 30px;
+  }
+}
+
+
+.about {
+	width: 90%;
+	display: flex;
+	align-items: flex-start;
+	margin: 0 5% ;
+}
+.about h3 {
+	text-align: left;
+	text-decoration: underline;
+}
+.about .aboutBlock {
+	width: 68%;
+	padding: 1%;
+
+}
+.about .aboutTours {
+	width: 28%;
+	padding: 1%;
+}
+
+.about .aboutTours .block {
+	width: 98%;
+	padding: 1%;
+
+}
+
+.about .aboutTours .block .img {
+	width: 100%;
+	position: relative;
+	height: 150px;
+}
+.about .aboutTours .block .img img {
+	width: 100%;
+	height: 100%;
+}
+.about .aboutTours .block .img .info {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.4);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	color: white;
+	transition: 0.4s;
+	cursor:pointer;
+}
+
+.about .aboutTours .block .img .info span {
+	font-size: 1.5rem;
+}
+
+.about .aboutTours .block .img .info a {
+	color: white;
+	padding: 2% 5%;
+	background: rgba(0, 0, 0, 0.6);
+	opacity: 0;
+	position: absolute;
+	bottom: 20px;
+}
+
+.about .aboutTours .block .img .info:hover {
+	background: none;
+	transition: 0.4s;
+}
+.about .aboutTours .block .img .info:hover a {
+	opacity: 1;
+}
+
+
+@media (max-width:991px) {
+	header {
+		padding: 0% 2%;
+	}
+	section {
+		width: 96%;
+		margin: 2%;
+		padding: 1%;
+	}
+
+	.tour {
+		width: 94%;
+		margin: 3%;
+	}
+
+	.tour .block1 {
+		width: 92%;
+	}
+	.tour .block1 .img {
+		width: 35%;
+		min-height: 180px;
+	}
+	.tour .block1 .info {
+		width: 65%;
+	}
+	.tour .block2 {
+		width: 45%;
+	}
+	.tour .block2 .img {
+			width: 40%;
+			min-height: 120px;
+	}
+	.tour .block2 .img img {
+			width: 98%;
+			min-height: 120px;
+	}
+	.tour .block2 .info{
+		width: 60%;
+	}
+	.tour .block3 {
+		width: 29.5%;
+	} 
+	.tour .videoInfo {
+		width: 92%;
+		margin: 2% 4%;
+		box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.1);
+	}
+	.about {
+		width: 94%;
+		margin: 2% 3%;
+	}
+}
+
+
+@media (max-width:778px) {
+	header {
+		padding: 0% 2%;
+	}
+
+	header .header .menu {
+		position: fixed;
+		left: -200%;
+		top: -150%;
+		z-index: 1000;
+		width: 100%;
+		height: 100vh;
+		min-height: 100px;
+		overflow: auto;
+		padding: 5% 1%;
+		transition: 0.5s;
+
+	}
+	header .header .menuActive {
+		left: 0%;
+		top: 0%;
+		flex-direction: column;
+		background: white;
+		transition: 0.3s;
+	}
+	
+	header .header .menuActive a {
+		width: 60%;
+	}
+	header .header button {
+		display: block;
+		position: relative;
+	}
+	header .header .closeMenu {
+		display: block;
+		font-size: 2rem;
+		position: absolute;
+		right: 2%;
+		top: 10px;
+		cursor: pointer;
+	}
+
+	header .header .closeMenuActive {
+		opacity: 1;
+		transition: 0.5s;
+		animation: menuClose 2s;
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+	}
+	.fa-bars {
+
+		transition: 0.3s;
+	}
+	.fa-barsNone {
+		opacity: 0;
+		transition: 0.5s;
+		animation: menuClose 3s ;
+
+	}
+	@keyframes menuClose {
+		0% {
+			transform: rotateY(0deg);
+		}
+		0% {
+			transform: rotateY(360deg);
+		}
+	}
+	header .headerTop {
+		width: 40px;
+		background: none;
+	}
+	header .headerTop .sosial {
+		padding: 5px;
+	}
+
+
+	header .headerTop .sosial a {
+		width: 30px;
+		height: 30px;
+		margin: 10px 2%;
+
+
+	}
+	section {
+		width: 98%;
+		margin: 1%;
+	}
+
+	.tour {
+		width: 98%;
+		margin: 1%;
+	}
+
+	.tour .block1 {
+		width: 96%;
+	}
+	.tour .block1 .img {
+		width: 30%;
+		height: auto;
+	}
+	.tour .block1 .img img {
+			max-width: 98%;
+			min-height: 150px;
+			height: auto;
+			left: 0px;
+			top: 0px;
+			border-radius: 0;
+	}
+	.tour .block1 .info {
+		width: 70%;
+	}
+	.tour .block2 {
+		width: 48%;
+		margin: 1%;
+		flex-wrap: wrap;
+	}
+	.tour .block2 .img {
+			width: 100%;
+			min-height: 120px;
+	}
+	.tour .block2 .img img {
+			max-width: 98%;
+			min-height: 120px;
+	}
+	.tour .block2 .info{
+		width: 100%;
+	}
+	.tour .block3 {
+		width: 48%;
+	} 
+	.tour .videoInfo {
+		width: 92%;
+		margin: 2% 4%;
+		box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.1);
+	}
+	.tour > div .img .price{
+		left: 5px;
+		top: 5px;
+		font-size: 0.9rem;
+	}
+	.tour .videoInfo .info h3 {
+		font-size: 1rem;
+	}
+	.tour .videoInfo .info *{
+		font-size: 0.9rem;
+	}
+	.about {
+		width: 96%;
+		margin: 1% 2%;
+	}
+	.about .aboutBlock{
+		width: 60%;
+	}
+	.about .aboutTours{
+		width: 40%;
+	}
+	.about .aboutTours .block .img .info span {
+		font-size: 1.2rem;
+	}
+}
+
+
+@media (max-width:600px) {
+	header {
+		padding: 0% 2%;
+	}
+	header .headerTop {
+		left: calc(100% - 40px);
+
+	}
+	header .header .logo {
+		width: 80px;
+	}
+	.dot {
+	  height: 10px;
+	  width: 10px;
+	}
+	
+	header .header .menuActive {
+		padding-top: 20px;
+	}
+	header .header .menu .closeMenu {
+		top: 5px;
+	}
+
+	section {
+		width: 100%;
+		margin: 1% 0;
+	}
+	.tour {
+		width: 98%;
+		margin: 1%;
+	}
+
+	.tour .block1 {
+		width: 100%;
+		margin: 1% 0;
+		padding: 1%;
+		flex-wrap: wrap;
+		gap: 10px;
+		justify-content: center;
+	}
+	.tour .block1 .img img {
+		box-shadow: none;
+	}
+	.tour .block1 .img {
+		width: 98%;
+	}
+	.tour .block1 .img img {
+			max-width: 98%;
+			min-height: 120px;
+			height: auto;
+			left: 0px;
+			top: 0px;
+			border-radius: 0;
+	}
+	.tour .block1 .info {
+		width: 100%;
+	}
+	.tour .block2 {
+		width: 100%;
+		margin: 1% 0%;
+		flex-wrap: wrap;
+	}
+	.tour .block2 .img {
+			width: 100%;
+			min-height: 120px;
+	}
+	.tour .block2 .img img {
+			max-width: 98%;
+			min-height: 120px;
+	}
+	.tour .block2 .info{
+		width: 100%;
+	}
+	.tour .block3 {
+		width: 100%;
+	} 
+	.tour .videoInfo {
+		width: 98%;
+		margin: 1%;
+		flex-wrap: wrap;
+	}
+	
+	.tour .videoInfo .video {
+		width: 98%;
+		padding: 1%;
+	}
+
+	.tour .videoInfo .info {
+		width: 98%;
+		padding: 1%;
+	}
+	
+	.about {
+		width: 98%;
+		margin: 1%;
+		flex-wrap: wrap;
+		gap: 1%;
+	}
+	.about .aboutBlock{
+		width: 100%;
+	}
+	.about .aboutTours{
+		width: 100%;
+	}
+	.about .aboutTours .block .img {
+		width: 100%;
+		position: relative;
+		height: 180px;
+	}
+	.about .aboutTours .block .img .info span {
+		font-size: 1.2rem;
+	}
 }

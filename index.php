@@ -1,9 +1,9 @@
 <?php 
 
 	$title = "Home page";
-	$listPage = ["home","tours","reviers","contact","about"];
-	$listName = ["Home", "Our tours", "Our reviers","Contact", "About"];
-	$listTitle = ["Home Page" , "Our tours",  "Our reviers", "Contact" , "About us"];
+	$listPage = ["home","tours","location","lodging","contact","about"];
+	$listName = ["Home", "Our tours", "Best Location","Our Lodging","Contact", "About"];
+	$listTitle = ["Home Page" , "Our Tours",  "Best Location ","Lodging", "Contact" , "About Us"];
 	$page = $listPage[0];
 	$title = $listTitle[0];
 	$activePage = 0;
@@ -28,9 +28,8 @@
     <link href="./img/logo.webp" rel="icon" type="image/x-png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   	<link rel="stylesheet" href="css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="./css/style1.css">
-   
-	<link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
+	<script src="js/swiper-bundle.min.js"></script>
 </head>
 <body>
 	<header>
@@ -59,6 +58,8 @@
 					<img src="./img/logo.webp">
 				</a>
 			</div>
+			<div class="menu">	
+				<span class="closeMenu" onclick="menu()"> &times; </span>
 			<?php 
 				for ($i=0; $i < sizeof($listPage); $i++) { 
 					if ($i == $activePage) {
@@ -66,13 +67,22 @@
 					} else echo '<a href="?'.$listPage[$i].'" class="">'.$listName[$i].'</a>';
 				}
 			?>
+			</div>
+			<button onclick="menu()">
+				<i class="fa fa-bars"></i>
+			</button>
 		</div>
 	</header>
 <?php 
 	require($page.".php");
+	require("footer.php");
 ?>
 <script>
-
+	function menu() {
+		document.querySelector(".menu").classList.toggle("menuActive")
+		document.querySelector(".closeMenu").classList.toggle("closeMenuActive")
+		document.querySelector(".fa-bars").classList.toggle("fa-barsNone")
+	}
 	function sosial() {
 		// alert()
 		let sos = 0
@@ -82,7 +92,7 @@
 				document.querySelector(".sosActive").classList.toggle("sosActive")
 			}
 			document.querySelector(`.sosial ${sosArray[sos++]}`).classList.toggle("sosActive")
-			if (sos < sosArray.length) {
+			if (sos < sosArray.length - 1) {
 				let scaleTime = setTimeout(scaleSos, 1500);
 			}
 		}
