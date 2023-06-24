@@ -5,6 +5,7 @@
 	$social = $conn -> query("SELECT * FROM tour.social");
 	$website = $conn -> query("SELECT * FROM tour.website");
 	$videoInfo = $conn -> query("SELECT * FROM tour.videoinfo ORDER BY id DESC");
+	$tour = $conn -> query("SELECT * FROM tour.tour ORDER BY id DESC");
 
 
 	$socialA = array();
@@ -28,6 +29,9 @@
 		}
 	}
 
+
+	$styleClassA = ["block1","block2","block3"];
+	$styleClassWordA = ["One row", "Two row", "Three row"];
 
 
 ?>

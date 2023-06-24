@@ -142,9 +142,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link <?php echo $categoria;?>" href="categoria.php">
+            <a class="nav-link <?php echo $atour;?>" href="aTour.php">
               <span data-feather="file" class="align-text-bottom"></span>
-              Категория
+              Tours
             </a>
           </li>
           <li class="nav-item">

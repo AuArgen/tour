@@ -68,6 +68,47 @@
         	$_SESSION['error'] = 1;
         	header("location:admin.php");
         }
+	} else if (isset($_POST['updateTour'])) {
+		$id = $_POST["id"];
+		$info = $_POST["info"];
+		$theme = $_POST["theme"];
+		$style = $_POST["styleClass"];
+		$best = 0;
+		if (isset($_POST["best"])) {
+			$best = 1;
+		}
+		$popular = 0;
+		if (isset($_POST["popular"])) {
+			$popular = 1;
+		}
+		$image = $_POST["imgl"];
+		if ($_FILES["image"]["name"] != '') {
+            $test = explode(".",$_FILES["image"]["name"]);
+            $e = end($test);
+            $namef = "IMG-Daniel-tour".date("Y-m-d-H-i-s").''.rand(1,1000).'k.'.$e;
+            $l = './img/'.$namef;
+            move_uploaded_file($_FILES["image"]["tmp_name"],$l);
+            unlink($image);
+            $image = './img/'.$namef;
+        }
+        if ($conn -> query("UPDATE tour.tour SET theme = '$theme',info = '$info', img = '$image', style = '$style', popular = '$popular', best = '$best'  WHERE id = $id")) {
+        	$_SESSION['updated'] = "Tour, ". $theme;
+        	header("location:atour.php");
+        } else {
+        	$_SESSION['error'] = 1;
+        	header("location:atour.php");
+        }
+	} else if (isset($_POST["tourMoreInfo"])) {
+		$info = $_POST["info"];
+		$id = $_POST["id"];
+
+		if ($conn -> query("UPDATE tour.moreinfo SET info='$info' WHERE id = '$id'")) {
+        	$_SESSION['adding'] = "Tour inforamtion ";
+        	header("location:aTour.php");
+        } else {
+        	$_SESSION['error'] = 1;
+        	header("location:aTour.php");
+        }
 	}
 
 	

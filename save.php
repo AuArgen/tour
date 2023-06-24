@@ -34,4 +34,51 @@
         	header("location:admin.php");
         }
 	}
+
+	if (isset($_POST['addTour'])) {
+		$info = $_POST["info"];
+		$theme = $_POST["theme"];
+		$best = 0;
+		if (isset($_POST["best"])) {
+			$best = 1;
+		}
+		$popular = 0;
+		if (isset($_POST["popular"])) {
+			$popular = 1;
+		}
+		$style = $_POST["styleClass"];
+		$image;
+		if ($_FILES["image"]["name"] != '') {
+            $test = explode(".",$_FILES["image"]["name"]);
+            $e = end($test);
+            $namef = "IMG-Daniel-tour".date("Y-m-d-H-i-s").''.rand(1,1000).'k.'.$e;
+            $l = './img/'.$namef;
+            move_uploaded_file($_FILES["image"]["tmp_name"],$l);
+            $image = './img/'.$namef;
+        }
+
+        if ($image != "" && $info != "" && $theme != "" && $style != "" && $conn -> query("INSERT INTO tour.tour(theme, info, img, style, popular, best) VALUES('$theme','$info','$image','$style','$popular','$best')")) {
+        	
+        	$_SESSION['adding'] = "Tour";
+        	header("location:aTour.php");
+        
+        	
+        } else {
+        	$_SESSION['error'] = 1;
+        	header("location:aTour.php");
+        }
+	}
+
+	if (isset($_POST["tourMoreInfo"])) {
+		$info = $_POST["info"];
+		$id_cate = $_POST["id_cate"];
+		$type = $_POST["type"];
+		if ($conn -> query("INSERT INTO tour.moreinfo(info,id_cate, type) VALUES('$info',$id_cate, $type)")) {
+        	$_SESSION['adding'] = "Tour inforamtion ";
+        	header("location:aTour.php");
+        } else {
+        	$_SESSION['error'] = 1;
+        	header("location:aTour.php");
+        }
+	}
 ?>
