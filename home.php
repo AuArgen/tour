@@ -67,40 +67,26 @@
 	<h3>
 		Videos about tours
 	</h3>
-	<div class="videoInfo">
-		<div class="video">
-			<iframe src="https://www.youtube.com/embed/fEuw4Hl04hU" title="LOST IN KYRGYZSTAN 4K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-		</div>
-		<div class="info">
-			<h3>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. 
-			</h3>
-			<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
-		</div>
-	</div>
-	<div class="videoInfo">
-		<div class="info">
-			<h3>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. 
-			</h3>
-			<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
-		</div>
-		<div class="video">
-			<iframe src="https://www.youtube.com/embed/fEuw4Hl04hU" title="LOST IN KYRGYZSTAN 4K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-		</div>
-	</div>
+	<?php 
+		if (mysqli_num_rows($videoInfo)) {
+			$counts = 0;
+			while ($r = mysqli_fetch_array($videoInfo)) {
+				$iframeE = '<div class="video"> '.$r["iframe"].'</div>';
+				$infoE = '		<div class="info">
+									<h3>
+										'.$r["theme"].' 
+									</h3>
+									<span>'.$r["info"].'</span>
+								</div>';
+				echo '<div class="videoInfo">';
+				if ($counts++ % 2 == 0) {
+					echo $iframeE.''.$infoE;
+				} else echo $infoE.''.$iframeE;
+				echo '</div>';
+			}
+		}
+	?>
+	
 </section>
 
 <!-- End SEction -->

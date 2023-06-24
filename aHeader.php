@@ -18,13 +18,14 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.111.3">
     <title><?php echo $title;?></title>
-    <link href="../img/favicon.jpg" rel="icon" type="image/x-png">
+    <link href="<?php echo $websiteA["logo"]; ?>" rel="icon" type="image/x-png">
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="http://cdn.ckeditor.com/4.6.2/full/ckeditor.js"></script>
     
 
 <link href="./css/bootstrap.min.css" rel="stylesheet">

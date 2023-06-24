@@ -25,8 +25,8 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="<?php echo $infoMeta; ?> ">
     <meta name="description" content=" <?php echo $infoMeta; ?> ">
-    <title><?php echo $title;?></title>
-    <link href="./img/logo.webp" rel="icon" type="image/x-png">
+    <title> <?php echo $websiteA["name"]; ?>, <?php echo $title;?></title>
+    <link href="<?php echo $websiteA["logo"]; ?>" rel="icon" type="image/x-png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   	<link rel="stylesheet" href="css/swiper-bundle.min.css">
     <link rel="stylesheet" href="./css/style.css">
@@ -36,17 +36,17 @@
 	<header>
 		<div class="headerTop">
 			<div class="sosial">
-				<a href="" class="whatsapp" title = "Whatsapp link">
+				<a href="https://wa.me/<?php echo $socialA["whatsapp"]; ?>" class="whatsapp" title = "Whatsapp link">
 					<i class="fab fa-whatsapp"></i>
 				</a>
-				<a href="" class="instagram" title = "Instagram page">
+				<a href="<?php echo $socialA["instagram"]; ?>" class="instagram" title = "Instagram page">
 					<i class="fab fa-instagram"></i>
 				</a>
-				<a href="tel:+996703421521" class="phone" title = "Phone number">
+				<a href="tel:<?php echo $socialA["phone"]; ?>" class="phone" title = "Phone number">
 					<i class="fas fa-phone"></i>
 				</a>
 				
-				<a href="" class="tiktok" title = "Tiktok page">
+				<a href="<?php echo $socialA["tiktok"]; ?>" class="tiktok" title = "Tiktok page">
 					<i class="fab fa-tiktok"></i>
 				</a>
 			</div>
@@ -56,7 +56,7 @@
 		<div class="header">
 			<div class="logo">
 				<a href="./">
-					<img src="./img/logo.webp">
+					<img src="<?php echo $websiteA["logo"]; ?>">
 				</a>
 			</div>
 			<div class="menu">	

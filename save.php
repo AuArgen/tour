@@ -13,10 +13,25 @@
             $image = './img/'.$namef;
         }
 
-        if ($conn -> query("INSERT INTO slide(text,img) VALUES('$text','$image')")) {
-        	$_SESSION['adding'] = 1;
+        if ($image != "" && $text != "" && $conn -> query("INSERT INTO slide(text,img) VALUES('$text','$image')")) {
+        	$_SESSION['adding'] = "Slide";
+        	header("location:admin.php");
+        } else {
+        	$_SESSION['error'] = 1;
         	header("location:admin.php");
         }
 	}
 	
+	if (isset($_POST["addVideoInfo"])) {
+		$info = $_POST["info"];
+		$theme = $_POST["theme"];
+		$iframe = $_POST["iframe"];
+		if ($iframe != "" && $theme != "" && $info != "" && $conn -> query("INSERT INTO tour.videoinfo(theme,info,iframe) VALUES('$theme','$info','$iframe')")) {
+        	$_SESSION['adding'] = "Video inforamtion about the tour";
+        	header("location:admin.php");
+        } else {
+        	$_SESSION['error'] = 1;
+        	header("location:admin.php");
+        }
+	}
 ?>
