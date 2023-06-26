@@ -1,6 +1,6 @@
 <?php 
-	$atour = "active";
-	$title = "Admin panel our tour";
+	$ateam = "active";
+	$title = "Admin panel Our team";
 	
 ?>
 <!DOCTYPE html>
@@ -62,7 +62,7 @@
           }
       ?>
 	  	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-	        <h1 class="h4">Tour page</h1>
+	        <h1 class="h4">Our team page</h1>
 	    </div>
                
         	<br>		
@@ -70,50 +70,41 @@
 		<form id="videos" action="save.php" class="form-control" method="post" enctype="multipart/form-data">
                     <span class="fs-4">
                       <center class="text-success">
-                       	New tour <i class="fas fa-plus"></i>
+                       	Add a new team member <i class="fas fa-plus"></i>
                       </center>
                     </span>
-                     <label for="image">Image tour <span class="text-danger">*</span></label>
+                     <label for="image">Image <span class="text-danger">*</span></label>
                     <input type="file" accept=".png, .jpg, .jpeg, .webp" name="image" id="image" class="form-control mt-3" required >
  
-                    <label for="theme">Theme<span class="text-danger">*</span></label>
-                    <input type="text" name="theme" id="theme"  placeholder="please enter theme " class="form-control mt-3 mb-3"  required>
-                    <label for="price">Price<span class="text-danger">*</span></label>
-                    <input type="number" name="price" id="price"  placeholder="please enter price " class="form-control mt-3 mb-3"  required>
-                    <select name="styleClass" class="form-select mb-3" required>
-                      <option value="">Change style blog</option>
-                      <?php 
-                        for ($i=0; $i < sizeof($styleClassWordA); $i++) { 
-                          echo '<option value="'.($i+1).'">'.$styleClassWordA[$i].'</option>';
-                        }
-                      ?>
-                    </select>
-                    <label for="popular">Popular tour<span class="text-danger">*</span></label>
-                    <input type="checkbox" name="popular" id="popular"  class="form-checkbox mt-3 mb-3">
+                    <label for="name">Name<span class="text-danger">*</span></label>
+                    <input type="text" name="name" id="name"  placeholder="please enter name " class="form-control mt-3 mb-3"  required>
+                     <label for="description">Description<span class="text-danger">*</span></label>
+                    <textarea  name="description" id="description"  placeholder="please enter price " class="form-control mt-3 mb-3"  required> Enter description .. </textarea>
+                   
+                    <label for="whatsapp">Whatsapp<span class="text-danger">*</span></label>
+                    <input type="tel" name="whatsapp" id="whatsapp"  placeholder="please enter whatsapp number " value="+996" class="form-control mt-3 mb-3"  required>
                     <br>
-                    <label for="best">Best tour<span class="text-danger">*</span></label>
-                    <input type="checkbox" name="best" id="best"  class="form-checkbox mt-3 mb-3">
+                    <label for="instagram">Instagram<span class="text-danger">*</span></label>
+                    <input type="tel" name="instagram" id="instagram"  placeholder="please enter instagram link " value="" class="form-control mt-3 mb-3"  required>
                     <br>
-                    <textarea type="text" name="info" id="editor" placeholder="Please, enter information about your website" class="form-control mt-3" required>Text about the tour blog  </textarea>
+                      <label for="facebook">Facebook<span class="text-danger">*</span></label>
+                    <input type="tel" name="facebook" id="facebook"  placeholder="please enter facebook link " value="" class="form-control mt-3 mb-3"  required>
+                    <br>
 
-                    <input type="submit" name="addTour" value="Add new tour" class="btn btn-outline-success form-control mt-3 mb-3" required="">
+                    <input type="submit" name="team" value="Add a new team member " class="btn btn-outline-success form-control mt-3 mb-3" required="">
                 </form>
 
 
-       	<h2>Tours</h2>
+       	<h2>Our team</h2>
      	<div class="table-responsive">
         <table class="table table-striped table-sm">
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">image</th>
-              <th scope="col">Theme</th>
-              <th scope="col">$</th>
-              <th scope="col">Info</th>
-              <th scope="col">Style</th>
-              <th scope="col">Popular</th>
-              <th scope="col">Best</th>
-              <th scope="col" class="text-center"><i class="fas fa-plus"> </i></th>
+              <th scope="col">Image</th>
+              <th scope="col">Name</th>
+              <th scope="col">Description</th>
+              <th scope="col">Whatsapp</th>
               <th scope="col" class="text-center"><i class="fas fa-pen"> </i></th>
               <th scope="col" class="text-center"><i class="fas fa-trash"> </i></th>
             </tr>
@@ -121,21 +112,18 @@
           <tbody>
           <?php 
             $count = 1;
-            if (mysqli_num_rows($tour)) {
-              while ($row = mysqli_fetch_array($tour)) {
+            if (mysqli_num_rows($team)) {
+              while ($row = mysqli_fetch_array($team)) {
                 echo '
                    <tr>
                     <td>'.$count++.'</td>
                     <td><img src="'.$row["img"].'" width="200"></td>
-                    <td>'.$row["theme"].'</td>
-                    <td>$'.$row["price"].'</td>
-                    <td> <div  style="max-height:200px; width:300px; overflow:scroll; ">'.$row["info"].'</div></td>
-                    <td class= "">'. $styleClassWordA[$row["style"]-1].'</td>
-                    <td class= "fs-4">'.($row["popular"]?"+":"-").'</td>
-                    <td class= "fs-4">'.($row["best"]?"+":"-").'</td>
-                    <td class="text-center"><a class="btn btn-success fs-6" href="addMoreTour.php?id='.$row["id"].'&theme='.$row["theme"].'&type=1"><i class="fas fa-plus" style="font-size:0.9rem;" ></i></a></td>
-                    <td class="text-center"><a class="btn btn-success fs-6" href="uTour.php?id='.$row["id"].'"><i class="fas fa-pen" style="font-size:0.9rem;" ></i></a></td>
-                    <td class="text-center"><a  class="btn btn-danger fs-6" href="delete.php?pages='.$row["id"].'&type=1&img='.$row["img"].'" ><i class="fas fa-trash" style="font-size:0.9rem;"></i></a></td>
+                    <td>'.$row["name"].'</td>
+                    <td>'.$row["description"].'</td>
+                    <td>'.$row["whatsapp"].'</td>
+                    
+                    <td class="text-center"><a class="btn btn-success fs-6" href="uTeam.php?id='.$row["id"].'"><i class="fas fa-pen" style="font-size:0.9rem;" ></i></a></td>
+                    <td class="text-center"><a  class="btn btn-danger fs-6" href="delete.php?team='.$row["id"].'&img='.$row["img"].'" ><i class="fas fa-trash" style="font-size:0.9rem;"></i></a></td>
                   </tr>
                 ';
               }

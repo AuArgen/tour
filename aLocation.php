@@ -1,6 +1,6 @@
 <?php 
-	$atour = "active";
-	$title = "Admin panel our tour";
+	$alocation = "active";
+	$title = "Admin panel best location";
 	
 ?>
 <!DOCTYPE html>
@@ -62,7 +62,7 @@
           }
       ?>
 	  	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-	        <h1 class="h4">Tour page</h1>
+	        <h1 class="h4">Best Location page</h1>
 	    </div>
                
         	<br>		
@@ -70,15 +70,15 @@
 		<form id="videos" action="save.php" class="form-control" method="post" enctype="multipart/form-data">
                     <span class="fs-4">
                       <center class="text-success">
-                       	New tour <i class="fas fa-plus"></i>
+                       	New Best Location <i class="fas fa-plus"></i>
                       </center>
                     </span>
-                     <label for="image">Image tour <span class="text-danger">*</span></label>
+                     <label for="image">Image best location <span class="text-danger">*</span></label>
                     <input type="file" accept=".png, .jpg, .jpeg, .webp" name="image" id="image" class="form-control mt-3" required >
  
                     <label for="theme">Theme<span class="text-danger">*</span></label>
                     <input type="text" name="theme" id="theme"  placeholder="please enter theme " class="form-control mt-3 mb-3"  required>
-                    <label for="price">Price<span class="text-danger">*</span></label>
+                     <label for="price">Price<span class="text-danger">*</span></label>
                     <input type="number" name="price" id="price"  placeholder="please enter price " class="form-control mt-3 mb-3"  required>
                     <select name="styleClass" class="form-select mb-3" required>
                       <option value="">Change style blog</option>
@@ -88,19 +88,15 @@
                         }
                       ?>
                     </select>
-                    <label for="popular">Popular tour<span class="text-danger">*</span></label>
-                    <input type="checkbox" name="popular" id="popular"  class="form-checkbox mt-3 mb-3">
+                    
                     <br>
-                    <label for="best">Best tour<span class="text-danger">*</span></label>
-                    <input type="checkbox" name="best" id="best"  class="form-checkbox mt-3 mb-3">
-                    <br>
-                    <textarea type="text" name="info" id="editor" placeholder="Please, enter information about your website" class="form-control mt-3" required>Text about the tour blog  </textarea>
+                    <textarea type="text" name="info" id="editor" placeholder="Please, enter information about your website" class="form-control mt-3" required>Text about the best location blog  </textarea>
 
-                    <input type="submit" name="addTour" value="Add new tour" class="btn btn-outline-success form-control mt-3 mb-3" required="">
+                    <input type="submit" name="addLocation" value="Add new best location" class="btn btn-outline-success form-control mt-3 mb-3" required="">
                 </form>
 
 
-       	<h2>Tours</h2>
+       	<h2>Best location</h2>
      	<div class="table-responsive">
         <table class="table table-striped table-sm">
           <thead>
@@ -111,8 +107,6 @@
               <th scope="col">$</th>
               <th scope="col">Info</th>
               <th scope="col">Style</th>
-              <th scope="col">Popular</th>
-              <th scope="col">Best</th>
               <th scope="col" class="text-center"><i class="fas fa-plus"> </i></th>
               <th scope="col" class="text-center"><i class="fas fa-pen"> </i></th>
               <th scope="col" class="text-center"><i class="fas fa-trash"> </i></th>
@@ -121,8 +115,8 @@
           <tbody>
           <?php 
             $count = 1;
-            if (mysqli_num_rows($tour)) {
-              while ($row = mysqli_fetch_array($tour)) {
+            if (mysqli_num_rows($location)) {
+              while ($row = mysqli_fetch_array($location)) {
                 echo '
                    <tr>
                     <td>'.$count++.'</td>
@@ -131,11 +125,9 @@
                     <td>$'.$row["price"].'</td>
                     <td> <div  style="max-height:200px; width:300px; overflow:scroll; ">'.$row["info"].'</div></td>
                     <td class= "">'. $styleClassWordA[$row["style"]-1].'</td>
-                    <td class= "fs-4">'.($row["popular"]?"+":"-").'</td>
-                    <td class= "fs-4">'.($row["best"]?"+":"-").'</td>
-                    <td class="text-center"><a class="btn btn-success fs-6" href="addMoreTour.php?id='.$row["id"].'&theme='.$row["theme"].'&type=1"><i class="fas fa-plus" style="font-size:0.9rem;" ></i></a></td>
-                    <td class="text-center"><a class="btn btn-success fs-6" href="uTour.php?id='.$row["id"].'"><i class="fas fa-pen" style="font-size:0.9rem;" ></i></a></td>
-                    <td class="text-center"><a  class="btn btn-danger fs-6" href="delete.php?pages='.$row["id"].'&type=1&img='.$row["img"].'" ><i class="fas fa-trash" style="font-size:0.9rem;"></i></a></td>
+                    <td class="text-center"><a class="btn btn-success fs-6" href="addMoreTour.php?id='.$row["id"].'&theme='.$row["theme"].'&type=2"><i class="fas fa-plus" style="font-size:0.9rem;" ></i></a></td>
+                    <td class="text-center"><a class="btn btn-success fs-6" href="uLocation.php?id='.$row["id"].'&type=2"><i class="fas fa-pen" style="font-size:0.9rem;" ></i></a></td>
+                    <td class="text-center"><a  class="btn btn-danger fs-6" href="delete.php?pages='.$row["id"].'&type=2&img='.$row["img"].'" ><i class="fas fa-trash" style="font-size:0.9rem;"></i></a></td>
                   </tr>
                 ';
               }

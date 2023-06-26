@@ -1,31 +1,23 @@
 <?php 
     require("./conn.php");
   $id = $_GET['id'];
-  $uTour = $conn -> query("SELECT * FROM tour.tour WHERE id = '$id'");
+  $uLocation = $conn -> query("SELECT * FROM tour.lodging WHERE id = '$id'");
   $img;
-  $theme;
+  $name;
   $price;
   $info;
   $style = -1;
-  $best = "";
-  $popular = "";
-  if (mysqli_num_rows($uTour)) {
-      while ($r = mysqli_fetch_array($uTour)) {
+  if (mysqli_num_rows($uLocation)) {
+      while ($r = mysqli_fetch_array($uLocation)) {
         $info = $r["info"];
-        $theme = $r["theme"];
-        $price = $r["price"];
+        $name = $r["name"];
         $img = $r["img"];
-        if ($r["popular"]) {
-          $popular = "checked";
-        }
-        if ($r["best"]) {
-          $best = "checked";
-        }
+        $price = $r["price"];
         $style = $r["style"] - 1;
       }
   }
-	$atour = "active";
-	$title = "Admin panel update".$theme;
+	$alodging = "active";
+	$title = "Admin panel update".$name;
 	
 ?>
 <!DOCTYPE html>
@@ -44,16 +36,16 @@
 	<?php require("aHeader.php"); ?>
 	<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 	  	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-	        <h1 class="h4">Update <?php echo $theme; ?> </h1>
-           <a href="aTour.php" class="fa fa-arrow-left"> Back</a>
+	        <h1 class="h4"> Update <?php echo $name; ?> </h1>
+           <a href="aLocation.php" class="fa fa-arrow-left"> Back</a>
 	    </div>
                <form id="videos" action="update.php" class="form-control" method="post" enctype="multipart/form-data">
                     <span class="fs-4">
                       <center class="text-success">
-                        Update tour <i class="fas fa-plus"></i>
+                        Update <?php echo $name; ?>   <i class="fas fa-plus"></i>
                       </center>
                     </span>
-                     <label for="image">Image tour <span class="text-danger">*</span></label>
+                     <label for="image">Image lodging <span class="text-danger">*</span></label>
                     <input type="file" accept=".png, .jpg, .jpeg, .webp" name="image" id="image" class="form-control mt-3">
                     <br>  
                     <img src="<?php echo $img; ?>" width=220>
@@ -61,8 +53,8 @@
                     <input type="hidden" name="id" value="<?php echo $id; ?>">
                     <br>
                     <br>
-                    <label for="theme">Theme<span class="text-danger">*</span></label>
-                    <input type="text" name="theme" id="theme"  placeholder="please enter theme " class="form-control mt-3 mb-3" value="<?php echo $theme; ?>"  required>
+                    <label for="name">Name<span class="text-danger">*</span></label>
+                    <input type="text" name="name" id="name"  placeholder="please enter name " class="form-control mt-3 mb-3" value="<?php echo $name; ?>"  required>
                     <label for="price">Price<span class="text-danger">*</span></label>
                     <input type="number" name="price" id="price"  placeholder="please enter price " class="form-control mt-3 mb-3" value="<?php echo $price; ?>"  required>
                     <select name="styleClass" class="form-select mb-3" required>
@@ -74,15 +66,11 @@
                         }
                       ?>
                     </select>
-                    <label for="popular">Popular tour<span class="text-danger">*</span></label>
-                    <input type="checkbox" name="popular" id="popular" <?php echo $popular; ?>  class="form-checkbox mt-3 mb-3">
-                    <br>
-                    <label for="best">Best tour<span class="text-danger">*</span></label>
-                    <input type="checkbox" name="best" id="best" <?php echo $best; ?>  class="form-checkbox mt-3 mb-3">
+                  
                     <br>
                     <textarea type="text" name="info" id="editor" placeholder="Please, enter information about your website" class="form-control mt-3" required><?php echo $info; ?> </textarea>
 
-                    <input type="submit" name="updateTour" value="Save" class="btn btn-outline-success form-control mt-3 mb-3" required="">
+                    <input type="submit" name="lodging" value="Save" class="btn btn-outline-success form-control mt-3 mb-3" required="">
                 </form>
     
 	  </main>

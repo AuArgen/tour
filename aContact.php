@@ -1,30 +1,6 @@
 <?php 
-  require("./conn.php");
-  $id = $_GET["id"];
-  $theme = $_GET["theme"];
-  $type = $_GET["type"];
-  $moreInfo = $conn -> query("SELECT * FROM moreinfo WHERE id_cate = $id and type = $type");
-  $page = "save.php";
-  $moreInfoA = array("info" => "Enter text or images or youtube video", "id" => 0, "id_cate" => $id, "type" => $type);
-  if (mysqli_num_rows($moreInfo)) {
-    while ($r = mysqli_fetch_array($moreInfo)) {
-      $page = "update.php";
-      $moreInfoA = array("info" => $r["info"], "id" => $r["id"], "id_cate" => $id, "type" => $type);
-    }
-  }
-  $atour = "";
-	$alocation = "";
-  if ($type == 1) {
-    $atour = "active";
-  }
-  if ($type == 2) {
-    $alocation = "active";
-  }
-  if ($type == 3) {
-    $alodging = "active";
-  }
-	$title = "Admin panel add more info";
-	$pageA = ["Tour","Location","Lodging"];
+	$acontact = "active";
+	$title = "Admin panel contact";
 ?>
 <!DOCTYPE html>
 <html>
@@ -85,28 +61,56 @@
           }
       ?>
 	  	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-	        <h1 class="h4">Add more infomation about the  <?php echo 'tour '.$theme; ?></h1>
-          <a href="a<?php echo $pageA[$type-1] ?>.php" class="fa fa-arrow-left"> Back</a>
-          
+	        <h1 class="h4">Contact</h1>
 	    </div>
+               
         	<br>		
 
-		<form id="videos" action="<?php echo $page; ?>" class="form-control" method="post" enctype="multipart/form-data">
-                    <span class="fs-4">
-                      <center class="text-success">
-                       	More infomation <i class="fas fa-plus"></i>
-                      </center>
-                    </span>
-                    <input type="hidden"  name="id" value="<?php echo $moreInfoA["id"]; ?>">
-                    <input type="hidden"  name="id_cate" value="<?php echo $moreInfoA["id_cate"]; ?>">
-                    <input type="hidden"  name="type" value="<?php echo $moreInfoA["type"]; ?>">
-                    <textarea type="text" name="info" id="editor" placeholder="Please, enter information about your website" class="form-control mt-3" required> <?php echo $moreInfoA["info"]; ?>   </textarea>
 
-                    <input type="submit" name="moreInfo" value="Save" class="btn btn-outline-success form-control mt-3 mb-3" required="">
-                </form>
-
-
-
+       	<h2>Contact messages</h2>
+     	<div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Messages</th>
+              <th scope="col">Status</th>
+              <th scope="col">Date</th>
+              <th scope="col" class="text-center"><i class="fas fa-eye"> </i></th>
+              <th scope="col" class="text-center"><i class="fas fa-trash"> </i></th>
+            </tr>
+          </thead>
+          <tbody>
+          <?php 
+            $count = 1;
+            if (mysqli_num_rows($contact)) {
+              while ($row = mysqli_fetch_array($contact)) {
+                $up = '<td class="text-center"><a class="btn btn-success fs-6" href="update.php?contact='.$row["id"].'"><i class="fas fa-eye" style="font-size:0.9rem;" ></i></a></td>';
+                if ($row["show"] == 1) {
+                  $up = '<td class="text-center"><i class="fas fa-eye" style="font-size:0.9rem;" ></i></td>';
+                }
+                echo '
+                   <tr>
+                    <td>'.$count++.'</td>
+                    <td>'.$row["name"].'</td>
+                    <td>'.$row["email"].'</td>
+                    <td> <div  style="max-height:200px; width:300px; overflow:auto; ">'.$row["message"].'</div></td>
+                    <td class="text-success">'.($row["show"] == 0? "New":"Old").'</td>
+                    <td class="">'.$row["dates"].'</td>
+                    '.$up.'
+                    
+                    <td class="text-center"><a  class="btn btn-danger fs-6" href="delete.php?contact='.$row["id"].'&name='.$row["name"].'" ><i class="fas fa-trash" style="font-size:0.9rem;"></i></a></td>
+                  </tr>
+                ';
+              }
+            }
+           
+          ?>
+          </tbody>
+        </table>
+      </div>
 
 
 	  </main>

@@ -4,22 +4,22 @@
         <div class="image-box">
           <img src="./img/contact.png" alt="" />
         </div>
-        <form action="#">
+        <form action="save.php" method="post">
           <div class="topic">Send us a message</div>
           <div class="input-box">
-            <input type="text" required />
+            <input type="text"  name="name" required />
             <label>Enter your name</label>
           </div>
           <div class="input-box">
-            <input type="text" required />
+            <input type="email" name="email" required />
             <label>Enter your email</label>
           </div>
           <div class="message-box">
-            <textarea></textarea>
+            <textarea name="message"></textarea>
             <label>Enter your message</label>
           </div>
           <div class="input-box">
-            <input type="submit" value="Send Message" />
+            <input type="submit" name="contact" value="Send Message" />
           </div>
         </form>
       </div>

@@ -1,30 +1,7 @@
 <?php 
-  require("./conn.php");
-  $id = $_GET["id"];
-  $theme = $_GET["theme"];
-  $type = $_GET["type"];
-  $moreInfo = $conn -> query("SELECT * FROM moreinfo WHERE id_cate = $id and type = $type");
-  $page = "save.php";
-  $moreInfoA = array("info" => "Enter text or images or youtube video", "id" => 0, "id_cate" => $id, "type" => $type);
-  if (mysqli_num_rows($moreInfo)) {
-    while ($r = mysqli_fetch_array($moreInfo)) {
-      $page = "update.php";
-      $moreInfoA = array("info" => $r["info"], "id" => $r["id"], "id_cate" => $id, "type" => $type);
-    }
-  }
-  $atour = "";
-	$alocation = "";
-  if ($type == 1) {
-    $atour = "active";
-  }
-  if ($type == 2) {
-    $alocation = "active";
-  }
-  if ($type == 3) {
-    $alodging = "active";
-  }
-	$title = "Admin panel add more info";
-	$pageA = ["Tour","Location","Lodging"];
+	$aabout = "active";
+	$title = "Admin panel About";
+	
 ?>
 <!DOCTYPE html>
 <html>
@@ -85,26 +62,23 @@
           }
       ?>
 	  	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-	        <h1 class="h4">Add more infomation about the  <?php echo 'tour '.$theme; ?></h1>
-          <a href="a<?php echo $pageA[$type-1] ?>.php" class="fa fa-arrow-left"> Back</a>
-          
+	        <h1 class="h4">About page</h1>
 	    </div>
+               
         	<br>		
 
-		<form id="videos" action="<?php echo $page; ?>" class="form-control" method="post" enctype="multipart/form-data">
+		<form id="videos" action="update.php" class="form-control" method="get" enctype="multipart/form-data">
                     <span class="fs-4">
                       <center class="text-success">
-                       	More infomation <i class="fas fa-plus"></i>
+                       	About us infromation <i class="fas fa-pen"></i>
                       </center>
                     </span>
-                    <input type="hidden"  name="id" value="<?php echo $moreInfoA["id"]; ?>">
-                    <input type="hidden"  name="id_cate" value="<?php echo $moreInfoA["id_cate"]; ?>">
-                    <input type="hidden"  name="type" value="<?php echo $moreInfoA["type"]; ?>">
-                    <textarea type="text" name="info" id="editor" placeholder="Please, enter information about your website" class="form-control mt-3" required> <?php echo $moreInfoA["info"]; ?>   </textarea>
+                     
+                    <br>
+                    <textarea type="text" name="info" id="editor" placeholder="Please, enter information about your website" class="form-control mt-3" required> <?php echo $aboutInfo ?>  </textarea>
 
-                    <input type="submit" name="moreInfo" value="Save" class="btn btn-outline-success form-control mt-3 mb-3" required="">
+                    <input type="submit" name="about" value="Save" class="btn btn-outline-success form-control mt-3 mb-3" required="">
                 </form>
-
 
 
 

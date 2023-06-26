@@ -6,7 +6,13 @@
 	$website = $conn -> query("SELECT * FROM tour.website");
 	$videoInfo = $conn -> query("SELECT * FROM tour.videoinfo ORDER BY id DESC");
 	$tour = $conn -> query("SELECT * FROM tour.tour ORDER BY id DESC");
-
+	$location = $conn -> query("SELECT * FROM tour.location ORDER BY id DESC");
+	$lodging = $conn -> query("SELECT * FROM tour.lodging ORDER BY id DESC");
+	$contact = $conn -> query("SELECT * FROM tour.contact ORDER BY id DESC");
+	$team = $conn -> query("SELECT * FROM tour.team ORDER BY id DESC");
+	$contactcountr = $conn -> query("SELECT id FROM tour.contact WHERE 'show'=0");
+	$contactcount =  mysqli_num_rows($contactcountr);
+	$about = $conn -> query("SELECT * FROM tour.about");
 
 	$socialA = array();
 	if (mysqli_num_rows($social)) {
@@ -28,7 +34,12 @@
 							);
 		}
 	}
-
+	$aboutInfo = "Enter about information...";
+	if (mysqli_num_rows($about)) {
+		while ($r = mysqli_fetch_array($about)) {
+			$aboutInfo = $r["info"];
+		}
+	}
 
 	$styleClassA = ["block1","block2","block3"];
 	$styleClassWordA = ["One row", "Two row", "Three row"];

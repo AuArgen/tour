@@ -75,7 +75,11 @@
 		</div>
 	</header>
 <?php 
-	require($page.".php");
+	if (isset($_GET["read"])) {
+		require("read.php");
+	} else {
+		require($page.".php");
+	}
 	require("footer.php");
 ?>
 <script>

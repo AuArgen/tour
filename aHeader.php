@@ -1,12 +1,12 @@
 <?php 
   require("./service.php");
   if (isset($_SESSION["adminLogin"])) {
-      $login = "Megaline";
-      $psw = "MegalineAdmin2023";
+      $login = "Daniel";
+      $psw = "DanielAdmin2023";
       if ($_SESSION["adminLogin"] != $login || $_SESSION["adminPsw"] != $psw) {
         header("location:login.php");
       }
-  } //else  header("location:login.php");
+  } else  header("location:login.php");
 ?>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
@@ -143,32 +143,39 @@
           </li>
           <li class="nav-item">
             <a class="nav-link <?php echo $atour;?>" href="aTour.php">
-              <span data-feather="file" class="align-text-bottom"></span>
+              <span data-feather="map" class="align-text-bottom"></span>
               Tours
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link <?php echo $product;?>" href="product.php">
-              <span data-feather="shopping-cart" class="align-text-bottom"></span>
-              Продукталар 
+            <a class="nav-link <?php echo $alocation;?>" href="aLocation.php">
+              <span data-feather="file" class="align-text-bottom"></span>
+              Best location
+            </a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link <?php echo $alodging;?>" href="aLodging.php">
+              <span data-feather="home" class="align-text-bottom"></span>
+              Our Lodging
+            </a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link <?php echo $acontact;?>" href="aContact.php">
+              <span data-feather="mail" class="align-text-bottom"></span>
+              Contact (<?php echo $contactcount ?>)
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link <?php echo $aabout;?>" href="aAbout.php">
+              <span data-feather="info" class="align-text-bottom"></span>
+              About 
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link <?php echo $devoloper;?>" href="devoloper.php">
+            <a class="nav-link <?php echo $ateam;?>" href="aTeam.php">
               <span data-feather="users" class="align-text-bottom"></span>
-              Жумушчулар 
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link <?php echo $zakaz;?>" href="zakaz.php">
-              <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-              Заказ бергендер 
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link <?php echo $arhive;?>" href="arhive.php">
-              <span data-feather="layers" class="align-text-bottom"></span>
-              Архив 
+              Our team 
             </a>
           </li>
         </ul>

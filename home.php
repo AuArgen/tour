@@ -95,48 +95,30 @@
 	<h3>
 		Popular tours
 	</h3>
-	<div class="block1">
-		<div class="img">
-			<img src="./img/slide3.jpg">
-		</div>
-		<div class="info">
-			<h3>Lorem ipsum dolor sit amet </h3>
-			<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
-			<p>
-				<a href="read.php">
-					Read more
-				</a>
-				<span>
-					13.06.2023, 16:00
+		<?php 
+		$tourPopular = $conn -> query("SELECT * FROM tour.tour WHERE popular=1");
+	while ($r = mysqli_fetch_array($tourPopular)) {
+		echo '
+		<div class="'.$styleClassA[$r["style"]-1].'">
+			<div class="img">
+				<img src="'.$r["img"].'">
+				<span class="price">
+					$'.$r["price"].'
 				</span>
-			</p>
-		</div>	
-	</div>
-	<div class="block1">
-		<div class="img">
-			<img src="./img/slide4.jpg">
+			</div>
+			<div class="info">
+				<h3>'.$r["theme"].' </h3>
+				<span>'.$r["info"].'</span>
+				<p>
+					<a href="read.php?id='.$r["id"].'&theme='.$r["theme"].'">
+						Read more
+					</a>
+					
+				</p>
+			</div>	
 		</div>
-		<div class="info">
-			<h3>Lorem ipsum dolor sit amet </h3>
-			<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
-			<p>
-				<a href="read.php">
-					Read more
-				</a>
-				<span>
-					13.06.2023, 16:00
-				</span>
-			</p>
-		</div>	
-	</div>
+
+		';
+	}
+	?>
 </section>
